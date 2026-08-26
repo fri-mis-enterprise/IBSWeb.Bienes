@@ -390,14 +390,14 @@ namespace IBSWeb.Areas.Filpride.Controllers
                 row++;
 
 
-                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "Filpride.jpg");
+                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "bienes.png");
                 var imageFile = new FileInfo(imagePath);
 
                 if (imageFile.Exists)
                 {
                     var picture = await worksheet.Drawings.AddPictureAsync(Guid.NewGuid().ToString(), imageFile);
                     picture.SetPosition(1, 15, 4, 10);
-                    picture.SetSize(330, 75);
+                    picture.SetSize(70, 70);
                 }
 
                 worksheet.Row(row).Height = 80;
@@ -846,14 +846,14 @@ namespace IBSWeb.Areas.Filpride.Controllers
                 }
                 row++;
 
-                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "Filpride.jpg");
+                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "bienes.png");
                 var imageFile = new FileInfo(imagePath);
 
                 if (imageFile.Exists)
                 {
                     var picture = await worksheet.Drawings.AddPictureAsync(Guid.NewGuid().ToString(), imageFile);
                     picture.SetPosition(1, 15, 1, -85);
-                    picture.SetSize(330, 75);
+                    picture.SetSize(70, 70);
                 }
 
                 worksheet.Row(row).Height = 80;
@@ -1311,7 +1311,7 @@ namespace IBSWeb.Areas.Filpride.Controllers
                 worksheet.Cells["B1"].Value = "FILPRIDE RESOURCES INC.";
                 worksheet.Cells["B1"].Style.HorizontalAlignment = alignmentCenter;
 
-                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "Filpride.jpg");
+                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "bienes.png");
                 var imageFile = new FileInfo(imagePath);
 
                 if (imageFile.Exists)
@@ -1320,7 +1320,7 @@ namespace IBSWeb.Areas.Filpride.Controllers
                     worksheet.Row(2).Height = 80;
                     var picture = await worksheet.Drawings.AddPictureAsync(Guid.NewGuid().ToString(), imageFile);
                     picture.SetPosition(1, 15, 1, 15);
-                    picture.SetSize(330, 75);
+                    picture.SetSize(70, 70);
                 }
 
                 worksheet.Cells["B3"].Value = "TRIAL BALANCE";
@@ -1851,14 +1851,14 @@ namespace IBSWeb.Areas.Filpride.Controllers
                 row++;
 
 
-                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "Filpride.jpg");
+                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "bienes.png");
                 var imageFile = new FileInfo(imagePath);
 
                 if (imageFile.Exists)
                 {
                     var picture = await worksheet.Drawings.AddPictureAsync(Guid.NewGuid().ToString(), imageFile);
                     picture.SetPosition(1, 15, 4, 10);
-                    picture.SetSize(330, 75);
+                    picture.SetSize(70, 70);
                 }
 
                 worksheet.Row(row).Height = 80;
@@ -2299,14 +2299,14 @@ namespace IBSWeb.Areas.Filpride.Controllers
                 row++;
 
 
-                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "Filpride.jpg");
+                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "bienes.png");
                 var imageFile = new FileInfo(imagePath);
 
                 if (imageFile.Exists)
                 {
                     var picture = await worksheet.Drawings.AddPictureAsync(Guid.NewGuid().ToString(), imageFile);
                     picture.SetPosition(1, 15, 4, 10);
-                    picture.SetSize(330, 75);
+                    picture.SetSize(70, 70);
                 }
 
                 worksheet.Row(row).Height = 80;
