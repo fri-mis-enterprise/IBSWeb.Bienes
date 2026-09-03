@@ -30,34 +30,7 @@
 
 <table class="w-100">
     <tbody>
-        <tr>
-            @if (selectedCompany == "Filpride")
-            {
-                <td class="text-end" style="padding: 0 !important;"><img src="~/img/bienes.png" width="70px" /></td>
-            }
-            else if (selectedCompany == "Bienes")
-            {
-                <td class="text-end" style="padding: 0 !important;"><img src="~/img/bienes.png" width="70px" /></td>
-            }
-        </tr>
-        <tr style="margin: 0 !important;">
-            <td class="text-center" style="padding: 0 !important;">
-                @if (selectedCompany == "Filpride")
-                {
-                    <h2 class="company-name" style="margin: 0 0 1px 0;"><u><b>&nbsp;BIENES DE ORO&nbsp;</b></u></h2>
-                    <p style="margin: 0; padding: 0; line-height: 1;">
-                        Room 1401 -1402 Jollibee Centre San Miguel Avenue, Pasig City
-                    </p>
-                }
-                else if (selectedCompany == "Bienes")
-                {
-                    <h2 class="company-name"><u><b>&nbsp;BIENES DE ORO&nbsp;</b></u></h2>
-                    <p style="line-height: 1; margin-top:-7px;">
-                        Room 1401 -1402 Jollibee Centre San Miguel Avenue, Pasig City
-                    </p>
-                }
-            </td>
-        </tr>
+        <partial name="_CompanyDocumentHeaderRows" />
         <tr>
             <td class="text-end" style="padding: 0 !important;"><h6 class="series"><b>No.&nbsp;@Html.DisplayFor(model => model.ServiceInvoiceNo)</b></h6></td>
         </tr>
