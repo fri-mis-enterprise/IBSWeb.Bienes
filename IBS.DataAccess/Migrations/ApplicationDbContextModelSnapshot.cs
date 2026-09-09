@@ -2180,6 +2180,11 @@ namespace IBS.DataAccess.Migrations
                         .HasColumnType("character varying(200)")
                         .HasColumnName("payer_name");
 
+                    b.Property<string>("PlacementControlNumber")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("placement_control_number");
+
                     b.Property<string>("PostedBy")
                         .HasColumnType("varchar(50)")
                         .HasColumnName("posted_by");
@@ -2210,6 +2215,11 @@ namespace IBS.DataAccess.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)")
                         .HasColumnName("status");
+
+                    b.Property<string>("TDAccountNumber")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("td_account_number");
 
                     b.Property<int?>("TagType")
                         .HasColumnType("integer")

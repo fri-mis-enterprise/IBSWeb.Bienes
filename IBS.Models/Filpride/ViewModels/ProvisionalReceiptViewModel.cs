@@ -83,5 +83,14 @@ namespace IBS.Models.Filpride.ViewModels
 
         [Display(Name = "Batch#")]
         public string? BatchNumber { get; set; }
+
+        // Bienes only
+        [Required]
+        [Display(Name = "Placement Control #")]
+        public string PlacementControlNumber { get; set; } = string.Empty;
+
+        [Required]
+        [Display(Name = "TD Account #")]
+        public string TDAccountNumber { get; set; } = string.Empty;
     }
 }

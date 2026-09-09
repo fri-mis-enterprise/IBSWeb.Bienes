@@ -81,6 +81,8 @@ namespace IBSWeb.Areas.Filpride.Controllers
             {
                 Id = model.Id,
                 TransactionDate = model.TransactionDate,
+                PlacementControlNumber = model.PlacementControlNumber,
+                TDAccountNumber = model.TDAccountNumber,
                 CollectionCategoryId = model.CollectionCategoryId,
                 TagType = model.TagType,
                 TagId = ProvisionalReceiptTaggingService.GetTagId(model),
@@ -109,6 +111,8 @@ namespace IBSWeb.Areas.Filpride.Controllers
         private static void MapFormToEntity(ProvisionalReceiptViewModel viewModel, FilprideProvisionalReceipt model)
         {
             model.TransactionDate = viewModel.TransactionDate;
+            model.PlacementControlNumber = viewModel.PlacementControlNumber.Trim();
+            model.TDAccountNumber = viewModel.TDAccountNumber.Trim();
             model.CollectionCategoryId = viewModel.CollectionCategoryId;
             model.TagType = viewModel.TagType;
             model.TaggedSupplierId = viewModel.TagType == CollectionTagType.Employee ? viewModel.TagId : null;

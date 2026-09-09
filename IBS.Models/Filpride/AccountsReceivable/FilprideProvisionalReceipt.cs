@@ -104,5 +104,12 @@ namespace IBS.Models.Filpride.AccountsReceivable
 
         [StringLength(255)]
         public string? BatchNumber { get; set; }
+
+        // Bienes only
+        [Required]
+        public string PlacementControlNumber { get; set; } = string.Empty;
+
+        [Required]
+        public string TDAccountNumber { get; set; } = string.Empty;
     }
 }
