@@ -822,6 +822,8 @@ namespace IBS.DataAccess.Migrations
                     deposited_date = table.Column<DateOnly>(type: "date", nullable: true),
                     cleared_date = table.Column<DateOnly>(type: "date", nullable: true),
                     batch_number = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
+                    placement_control_number = table.Column<string>(type: "text", nullable: false),
+                    td_account_number = table.Column<string>(type: "text", nullable: false),
                     created_by = table.Column<string>(type: "varchar(100)", nullable: true),
                     created_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     edited_by = table.Column<string>(type: "varchar(50)", nullable: true),
