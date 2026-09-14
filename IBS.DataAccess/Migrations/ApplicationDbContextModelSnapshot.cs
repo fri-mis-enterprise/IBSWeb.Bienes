@@ -4039,6 +4039,7 @@ namespace IBS.DataAccess.Migrations
                         .HasColumnName("account_name");
 
                     b.Property<string>("AccountNumber")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)")
                         .HasColumnName("account_number");
