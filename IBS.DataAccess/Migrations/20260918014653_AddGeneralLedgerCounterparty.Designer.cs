@@ -3,6 +3,7 @@ using System;
 using IBS.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace IBS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260918014653_AddGeneralLedgerCounterparty")]
+    partial class AddGeneralLedgerCounterparty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1955,11 +1958,6 @@ namespace IBS.DataAccess.Migrations
                         .HasColumnType("character varying(200)")
                         .HasColumnName("payer_name");
 
-                    b.Property<string>("PlacementControlNumber")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("placement_control_number");
-
                     b.Property<string>("PostedBy")
                         .HasColumnType("varchar(50)")
                         .HasColumnName("posted_by");
@@ -1990,11 +1988,6 @@ namespace IBS.DataAccess.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)")
                         .HasColumnName("status");
-
-                    b.Property<string>("TDAccountNumber")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("td_account_number");
 
                     b.Property<int?>("TagType")
                         .HasColumnType("integer")

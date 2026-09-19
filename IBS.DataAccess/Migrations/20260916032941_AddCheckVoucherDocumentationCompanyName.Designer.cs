@@ -3,6 +3,7 @@ using System;
 using IBS.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace IBS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260916032941_AddCheckVoucherDocumentationCompanyName")]
+    partial class AddCheckVoucherDocumentationCompanyName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1955,11 +1958,6 @@ namespace IBS.DataAccess.Migrations
                         .HasColumnType("character varying(200)")
                         .HasColumnName("payer_name");
 
-                    b.Property<string>("PlacementControlNumber")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("placement_control_number");
-
                     b.Property<string>("PostedBy")
                         .HasColumnType("varchar(50)")
                         .HasColumnName("posted_by");
@@ -1990,11 +1988,6 @@ namespace IBS.DataAccess.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)")
                         .HasColumnName("status");
-
-                    b.Property<string>("TDAccountNumber")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("td_account_number");
 
                     b.Property<int?>("TagType")
                         .HasColumnType("integer")
@@ -2539,18 +2532,6 @@ namespace IBS.DataAccess.Migrations
                         .HasColumnType("varchar(200)")
                         .HasColumnName("account_title");
 
-                    b.Property<int?>("CounterpartyId")
-                        .HasColumnType("integer")
-                        .HasColumnName("counterparty_id");
-
-                    b.Property<string>("CounterpartyName")
-                        .HasColumnType("varchar(200)")
-                        .HasColumnName("counterparty_name");
-
-                    b.Property<int?>("CounterpartyType")
-                        .HasColumnType("integer")
-                        .HasColumnName("counterparty_type");
-
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(100)")
@@ -2608,9 +2589,6 @@ namespace IBS.DataAccess.Migrations
 
                     b.HasIndex("AccountId")
                         .HasDatabaseName("ix_filpride_general_ledger_books_account_id");
-
-                    b.HasIndex("CounterpartyType", "CounterpartyId")
-                        .HasDatabaseName("ix_filpride_general_ledger_books_counterparty_type_counterpart");
 
                     b.ToTable("filpride_general_ledger_books", (string)null);
                 });
