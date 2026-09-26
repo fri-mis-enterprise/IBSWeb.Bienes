@@ -1,7 +1,7 @@
-@model CollectionReceiptMultipleSiViewModel
+@model CollectionReceiptMultipleSvViewModel
 
 @{
-    ViewData["Title"] = "Collection Receipt for Multiple Invoice - Edit";
+    ViewData["Title"] = "Collection Receipt for Multiple Service Invoices - Edit";
 }
 
 <style>
@@ -70,10 +70,10 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="control-label">SI NO.<span class="required">*</span></label>
-                        <select asp-for="MultipleSIId" id="invoices" asp-items="@Model.SalesInvoices" class="form-select js-multiple siNo" multiple="multiple" style="width:100%">
+                        <select asp-for="MultipleSVId" id="invoices" asp-items="@Model.ServiceInvoices" class="form-select js-multiple siNo" multiple="multiple" style="width:100%">
                             <option></option>
                         </select>
-                        <span asp-validation-for="MultipleSIId" class="text-danger"></span>
+                        <span asp-validation-for="MultipleSVId" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@
                                 <tr>
                                     <th colspan="9" class="text-center py-4">Invoice Details</th>
                                 </tr><tr>
-                                    <th style="width:11.11%; padding-left:20px;" class="text-center">SI No's</th>
+                                    <th style="width:11.11%; padding-left:20px;" class="text-center">Service Invoice Nos.</th>
                                     <th class="text-end" style="width:11.11%;">Invoice Amount</th>
                                     <th class="text-end" style="width:11.11%;">CWVAT Remaining</th>
                                     <th class="text-end" style="width:11.11%;">CWT Remaining</th>
@@ -225,7 +225,7 @@
                         <button id="submitButton" type="submit" class="btn btn-primary form-control">Update</button>
                     </div>
                     <div class="col-6 col-md-3">
-                        <a asp-area="Filpride" asp-controller="CollectionReceipt" asp-action="Index" class="btn btn-outline-primary border form-control">Back to List</a>
+                        <a asp-area="Filpride" asp-controller="CollectionReceipt" asp-action="ServiceInvoiceIndex" class="btn btn-outline-primary border form-control">Back to List</a>
                     </div>
                 </div>
             </div>
@@ -242,10 +242,10 @@ await Html.RenderPartialAsync("_ValidationScriptsPartial");
 
 <script>
     // Store existing selected invoices for edit mode
-    var existingSelectedInvoices = @Html.Raw(Json.Serialize(Model.MultipleSIId));
-    var existingSIAmounts = @Html.Raw(Json.Serialize(Model.SIMultipleAmount));
-    var existingSIEwtAmounts = @Html.Raw(Json.Serialize(Model.SIMultipleEwtAmount));
-    var existingSIWvatAmounts = @Html.Raw(Json.Serialize(Model.SIMultipleWvatAmount));
+    var existingSelectedInvoices = @Html.Raw(Json.Serialize(Model.MultipleSVId));
+    var existingSIAmounts = @Html.Raw(Json.Serialize(Model.SVMultipleAmount));
+    var existingSIEwtAmounts = @Html.Raw(Json.Serialize(Model.SVMultipleEwtAmount));
+    var existingSIWvatAmounts = @Html.Raw(Json.Serialize(Model.SVMultipleWvatAmount));
     var InvoicePayments = @Html.Raw(Json.Serialize(Model.InvoicePayments));
     var collectionReceiptId = @Html.Raw(Json.Serialize(Model.CollectionReceiptId));
     var hasExisting2306 = @Html.Raw(Json.Serialize(Model.HasAlready2306));
@@ -260,7 +260,7 @@ await Html.RenderPartialAsync("_ValidationScriptsPartial");
             var crId = '@Model.CollectionReceiptId';
 
             $.ajax({
-                url: '@Url.Action("GetSalesInvoices", "CollectionReceipt", new { area = "Filpride" })',
+                url: '@Url.Action("GetServiceInvoices", "CollectionReceipt", new { area = "Filpride" })',
                 type: "GET",
                 data: {
                     customerNo: customerNo,
@@ -285,7 +285,7 @@ await Html.RenderPartialAsync("_ValidationScriptsPartial");
                             updateTotal2();
                         }
                     } else {
-                        console.log("No sales invoices found for the selected customer.");
+                        console.log("No service invoices found for the selected customer.");
                     }
                 }
             });
@@ -311,7 +311,7 @@ await Html.RenderPartialAsync("_ValidationScriptsPartial");
             // get values in multiselect
             let selectedInvoices = $invoices.val() || [];
 
-            $siList.find("input[name='SIMultipleAmount']").each(function () {
+            $siList.find("input[name='SVMultipleAmount']").each(function () {
                 const invoiceId = parseInt($(this).closest('tr').find("input[type='hidden']").val());
                 const payment = InvoicePayments.find(item => item.invoiceId === invoiceId);
                 if (payment) {
@@ -353,9 +353,9 @@ await Html.RenderPartialAsync("_ValidationScriptsPartial");
                             <input type='hidden' value='${siNo}' />
                             <input class="text-center w-100" type='text' value='${siText}' style='border:none' readonly />
                         </td>
-                        <td class="text-center"><input type='text' name='SIMultipleAmount' class="text-center inputAmount money w-100 paymentAmount_${siNo}" value='${existingAmount}'/></td>
-                        <td class="text-center"><input type='number' name='SIMultipleEwtAmount' class="text-center inputAmount taxAmount w-100 ewtAmount_${siNo}" min='0' step='0.0001' value='${existingEwtAmount}'/></td>
-                        <td class="text-center"><input type='number' name='SIMultipleWvatAmount' class="text-center inputAmount taxAmount w-100 wvatAmount_${siNo}" min='0' step='0.0001' value='${existingWvatAmount}'/></td>
+                        <td class="text-center"><input type='text' name='SVMultipleAmount' class="text-center inputAmount money w-100 paymentAmount_${siNo}" value='${existingAmount}'/></td>
+                        <td class="text-center"><input type='number' name='SVMultipleEwtAmount' class="text-center inputAmount taxAmount w-100 ewtAmount_${siNo}" min='0' step='0.0001' value='${existingEwtAmount}'/></td>
+                        <td class="text-center"><input type='number' name='SVMultipleWvatAmount' class="text-center inputAmount taxAmount w-100 wvatAmount_${siNo}" min='0' step='0.0001' value='${existingWvatAmount}'/></td>
                     </tr>`);
         }
 
@@ -379,14 +379,14 @@ await Html.RenderPartialAsync("_ValidationScriptsPartial");
 
         function fetchInvoiceBalance(siNo) {
             $.ajax({
-                url: '@Url.Action("MultipleInvoiceBalance", "CollectionReceipt", new { area = "Filpride" })',
+                url: '@Url.Action("MultipleServiceInvoiceBalance", "CollectionReceipt", new { area = "Filpride" })',
                 method: "GET",
                 data: { siNo, collectionReceiptId },
                 success: function (data) {
                     if (!data) return;
 
                     const gross = data.amount;
-                    const netAmount = gross / 1.12;
+                    const netAmount = data.netAmount;
                     const vatAmount = data.cwVatBalance;
                     const ewtAmount = data.cwtBalance;
                     const netOfEWT = gross - (vatAmount + ewtAmount);
@@ -434,10 +434,10 @@ await Html.RenderPartialAsync("_ValidationScriptsPartial");
         function updateTaxTotals() {
             let totalEwt = 0;
             let totalWvat = 0;
-            $("input[name='SIMultipleEwtAmount']").each(function () {
+            $("input[name='SVMultipleEwtAmount']").each(function () {
                 totalEwt += parseNumber($(this).val());
             });
-            $("input[name='SIMultipleWvatAmount']").each(function () {
+            $("input[name='SVMultipleWvatAmount']").each(function () {
                 totalWvat += parseNumber($(this).val());
             });
             $("#EWT").val(totalEwt.toFixed(4));
@@ -446,7 +446,7 @@ await Html.RenderPartialAsync("_ValidationScriptsPartial");
             document.getElementById("WVAT").dispatchEvent(new Event("input", { bubbles: true }));
         }
 
-        $(document).on("input change", "input[name='SIMultipleEwtAmount'], input[name='SIMultipleWvatAmount']", updateTaxTotals);
+        $(document).on("input change", "input[name='SVMultipleEwtAmount'], input[name='SVMultipleWvatAmount']", updateTaxTotals);
 
         function calculateGrandTotalInvoiceAmount() {
             let grandTotalRRAmount = 0,
@@ -569,12 +569,12 @@ await Html.RenderPartialAsync("_ValidationScriptsPartial");
         }
     }
 
-    $(document).on("input", "input[name='SIMultipleAmount']", updateTotal2);
+    $(document).on("input", "input[name='SVMultipleAmount']", updateTotal2);
 
     function updateTotal2() {
         totalBalance = 0;
 
-        $("input[name='SIMultipleAmount']").each(function () {
+        $("input[name='SVMultipleAmount']").each(function () {
             let val = $(this).val().replace(/,/g, '');
             let num = parseFloat(val) || 0;
             totalBalance += num;
@@ -586,7 +586,7 @@ await Html.RenderPartialAsync("_ValidationScriptsPartial");
 </script>
 
 <script>
-    $(document).on("blur change", "[name='SIMultipleAmount']", function () {
+    $(document).on("blur change", "[name='SVMultipleAmount']", function () {
         let numValue = parseNumber($(this).val());
         let maxValue = parseFloat($(this).attr("data-max")) || 0;
 

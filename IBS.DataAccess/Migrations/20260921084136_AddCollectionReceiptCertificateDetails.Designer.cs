@@ -3,6 +3,7 @@ using System;
 using IBS.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace IBS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260921084136_AddCollectionReceiptCertificateDetails")]
+    partial class AddCollectionReceiptCertificateDetails
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1399,14 +1402,6 @@ namespace IBS.DataAccess.Migrations
                         .HasColumnType("integer[]")
                         .HasColumnName("multiple_si_id");
 
-                    b.PrimitiveCollection<string[]>("MultipleSV")
-                        .HasColumnType("text[]")
-                        .HasColumnName("multiple_sv");
-
-                    b.PrimitiveCollection<int[]>("MultipleSVId")
-                        .HasColumnType("integer[]")
-                        .HasColumnName("multiple_sv_id");
-
                     b.PrimitiveCollection<DateOnly[]>("MultipleTransactionDate")
                         .HasColumnType("date[]")
                         .HasColumnName("multiple_transaction_date");
@@ -1438,10 +1433,6 @@ namespace IBS.DataAccess.Migrations
                         .HasMaxLength(13)
                         .HasColumnType("character varying(13)")
                         .HasColumnName("si_no");
-
-                    b.PrimitiveCollection<decimal[]>("SVMultipleAmount")
-                        .HasColumnType("numeric[]")
-                        .HasColumnName("sv_multiple_amount");
 
                     b.Property<string>("SVNo")
                         .HasMaxLength(13)
@@ -2011,11 +2002,6 @@ namespace IBS.DataAccess.Migrations
                         .HasColumnType("character varying(200)")
                         .HasColumnName("payer_name");
 
-                    b.Property<string>("PlacementControlNumber")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("placement_control_number");
-
                     b.Property<string>("PostedBy")
                         .HasColumnType("varchar(50)")
                         .HasColumnName("posted_by");
@@ -2046,11 +2032,6 @@ namespace IBS.DataAccess.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)")
                         .HasColumnName("status");
-
-                    b.Property<string>("TDAccountNumber")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("td_account_number");
 
                     b.Property<int?>("TagType")
                         .HasColumnType("integer")

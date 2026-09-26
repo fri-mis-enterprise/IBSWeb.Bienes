@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IBS.Models.Filpride.ViewModels
 {
-    public class CollectionReceiptMultipleSiViewModel
+    public class CollectionReceiptMultipleSvViewModel
     {
         public int? CollectionReceiptId { get; set; }
 
@@ -20,9 +20,9 @@ namespace IBS.Models.Filpride.ViewModels
         [StringLength(100)]
         public string? Remarks { get; set; }
 
-        public int[] MultipleSIId { get; set; } = null!;
+        public int[] MultipleSVId { get; set; } = null!;
 
-        public List<SelectListItem>? SalesInvoices { get; set; }
+        public List<SelectListItem>? ServiceInvoices { get; set; }
 
         public decimal CashAmount { get; set; }
 
@@ -78,9 +78,9 @@ namespace IBS.Models.Filpride.ViewModels
         [StringLength(50)]
         public string? CwVatReference2 { get; set; }
 
-        public decimal[] SIMultipleEwtAmount { get; set; } = null!;
+        public decimal[] SVMultipleEwtAmount { get; set; } = null!;
 
-        public decimal[] SIMultipleWvatAmount { get; set; } = null!;
+        public decimal[] SVMultipleWvatAmount { get; set; } = null!;
 
         public IFormFile? Bir2306 { get; set; }
 
@@ -97,19 +97,12 @@ namespace IBS.Models.Filpride.ViewModels
 
         public bool HasAlready2307 { get; set; }
 
-        public decimal[] SIMultipleAmount { get; set; } = null!;
+        public decimal[] SVMultipleAmount { get; set; } = null!;
 
         public List<InvoicePayment>? InvoicePayments { get; set; }
 
         public DateTime MinDate { get; set; }
 
         public string? BatchNumber { get; set; }
-    }
-
-    public class InvoicePayment
-    {
-        public int InvoiceId { get; set; }
-        public string InvoiceNumber { get; set; } = null!;
-        public decimal PaymentAmount { get; set; }
     }
 }
